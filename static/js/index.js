@@ -5,11 +5,11 @@ var loginViewModel = function() {
 	self.failed_sign_up = ko.observable(false);
 	self.sign_in = function() {
 		var data = ko.toJS(this);
-		data.model = "user";
-		data.action = "Login";
-		ajax_post(data).done(function(returnedData) {
+		data.action = "user/login";
+		post(data).then(function(returnedData) {
 			console.log(returnedData);
 		    if(returnedData.success == true) {
+		    	console.log("yes");
 	    		window.location.href = window.location.href;
 		    }
 		});
@@ -18,7 +18,7 @@ var loginViewModel = function() {
 	self.sign_up = function() {
 		var data = ko.toJS(this);
 		data.action = "user/sign_up";
-		ajax_post(data).done(function(returnedData) {
+		post(data).then(function(returnedData) {
 			console.log(returnedData);
 			if(returnedData.success == true) {
 				loginViewModel.sign_in();
