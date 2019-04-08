@@ -1,5 +1,5 @@
 var post_mocks = {
-	"user/log_in": function(data) {
+	"user/sign_in": function(data) {
 		if(data.username.length > 0) {
 			return new Promise(function(resolve, reject) {
 				resolve({success: true});
@@ -10,6 +10,11 @@ var post_mocks = {
 				resolve({success: false});
 			});
 		}
+	},
+	"user/sign_out": function(data) {
+		return new Promise(function(resolve, reject) {
+			resolve({success: true});
+		});
 	}
 };
 
