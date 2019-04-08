@@ -1,14 +1,20 @@
 var post_mocks = {
-	"user/login": function() {
-		return new Promise(function(resolve, reject) {
-			resolve({success: true});
-		});
+	"user/log_in": function(data) {
+		if(data.username.length > 0) {
+			return new Promise(function(resolve, reject) {
+				resolve({success: true});
+			});
+		}
+		else {
+			return new Promise(function(resolve, reject) {
+				resolve({success: false});
+			});
+		}
 	}
 };
 
 function post(data) {
 	if(typeof post_mocks[data.action] !== "undefined") {
-		console.log(post_mocks[data.action]);
 		return post_mocks[data.action](data);
 	}
 
