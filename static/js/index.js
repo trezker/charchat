@@ -13,6 +13,7 @@ var loginViewModel = function() {
 		    if(returnedData.success == true) {
 		    	self.authenticated(true);
 				self.error(false);
+				self.initialize_userpage();
 		    }
 			else {
 				self.error(true);
@@ -39,6 +40,17 @@ var loginViewModel = function() {
 		var data = { action: "user/sign_out" }
 		post(data).then(function(returnedData) {
 			self.authenticated(false);
+		});
+	}
+
+	self.initialize_userpage = function() {
+		post({action: "conversation/waiting"}).then(function(returnedData) {
+			if(returnedData.length > 0) {
+				//show chat interface
+			}
+			else {
+				//Show message "No conversations waiting"
+			}
 		});
 	}
 };
