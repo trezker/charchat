@@ -11,7 +11,7 @@ var loginViewModel = function() {
 		{ name: 'new', text: "New" }, 
 		{ name: 'chat', text: "Chat" }
 	]);
-	self.current_page = ko.observable("chat");
+	self.current_page = ko.observable(self.pages()[2]);
 
 	self.show_page = function(e) {
 		self.current_page(e);

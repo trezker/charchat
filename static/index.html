@@ -44,14 +44,14 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a data-bind="click: sign_out" class="nav-link" href="#">Log out</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 		<div id="content">
-			<div id="chat">
+			<div id="chat" data-bind="visible: current_page().name == 'chat'">
 				<div id="chatlog">
 					<div>Hej</div>
 					<div>Hallå</div>
@@ -59,6 +59,12 @@
 				<div id="chatinput">
 					<input class="form-control" />
 				</div>
+			</div>
+			<div id="find" data-bind="visible: current_page().name == 'find'">
+				Find a conversation
+			</div>
+			<div id="new" data-bind="visible: current_page().name == 'new'">
+				Start a new conversation
 			</div>
 		</div>
 	</div>
