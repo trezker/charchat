@@ -6,6 +6,17 @@ var loginViewModel = function() {
 	self.error_string = ko.observable("");
 	self.authenticated = ko.observable(false);
 
+	self.pages = ko.observableArray([
+		{ name: 'find', text: "Find" }, 
+		{ name: 'new', text: "New" }, 
+		{ name: 'chat', text: "Chat" }
+	]);
+	self.current_page = ko.observable("chat");
+
+	self.show_page = function(e) {
+		self.current_page(e);
+	};
+
 	self.sign_in = function() {
 		var data = ko.toJS(this);
 		data.action = "user/sign_in";

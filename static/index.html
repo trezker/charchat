@@ -38,15 +38,9 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Find</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="#">New</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Chat</a>
+				<ul class="navbar-nav mr-auto" data-bind="foreach: pages">
+					<li class="nav-item" data-bind="css: { active: $data == $root.current_page() }">
+						<a class="nav-link" href="#" data-bind="click: $parent.show_page, text: text"></a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
