@@ -18,8 +18,11 @@ var loginViewModel = function() {
 	};
 
 	self.sign_in = function() {
-		var data = ko.toJS(this);
-		data.action = "user/sign_in";
+		var data = {
+			action: "user/sign_in",
+			username: self.username,
+			password: self.password,
+		}
 		post(data).then(function(returnedData) {
 		    if(returnedData.success == true) {
 		    	self.authenticated(true);
@@ -34,8 +37,11 @@ var loginViewModel = function() {
 	};
 
 	self.sign_up = function() {
-		var data = ko.toJS(this);
-		data.action = "user/sign_up";
+		var data = {
+			action: "user/sign_up",
+			username: self.username,
+			password: self.password,
+		}
 		post(data).then(function(returnedData) {
 			if(returnedData.success == true) {
 				loginViewModel.sign_in();
