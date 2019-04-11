@@ -56,8 +56,11 @@
 					<div>Hej</div>
 					<div>Hallå</div>
 				</div>
-				<div id="chatinput">
-					<input class="form-control" />
+				<div class="input-group mb-3">
+  					<textarea class="form-control"></textarea>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button">Send</button>
+					</div>
 				</div>
 			</div>
 			<div id="find" data-bind="visible: current_page().name == 'find'">
