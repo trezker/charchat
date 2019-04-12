@@ -49,6 +49,8 @@ var handleFetchResponse = function (response) {
 				return Promise.reject(response);
 			}
 		}
-	);
+	).catch(function() {
+		return Promise.reject(response);
+	});
 };
 

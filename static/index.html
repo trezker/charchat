@@ -64,10 +64,30 @@
 				</div>
 			</div>
 			<div id="find" data-bind="visible: current_page().name == 'find'">
-				Find a conversation
+				<label>What do you want to talk about?</label>
+				<div class="input-group mb-3">
+  					<textarea class="form-control"></textarea>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button">Search</button>
+					</div>
+				</div>
+				<div data-bind="foreach: search_results">
+					<div class="input-group mb-3">
+	  					<textarea class="form-control" data-bind="text: text"></textarea>
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button">Reply</button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="new" data-bind="visible: current_page().name == 'new'">
-				Start a new conversation
+				<div class="form-group">
+					<label>What do you want to talk about?</label>
+  					<textarea class="form-control" rows="5"></textarea>
+				</div>
+				<div class="form-group">
+					<button data-bind="click: create_conversation" class="btn btn-block btn-md btn-primary"">Create conversation</button>
+				</div>
 			</div>
 		</div>
 	</div>

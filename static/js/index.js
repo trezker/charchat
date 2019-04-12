@@ -5,6 +5,16 @@ var loginViewModel = function() {
 	self.error = ko.observable(false);
 	self.error_string = ko.observable("");
 	self.authenticated = ko.observable(false);
+	self.search_results = ko.observableArray([
+		{
+			id: "doaiwdbn",
+			text: "Talk about cars"
+		},
+		{
+			id: "fwfogfin",
+			text: "Talk about food"
+		}
+	]);
 
 	self.pages = ko.observableArray([
 		{ name: 'find', text: "Find" }, 
@@ -58,7 +68,7 @@ var loginViewModel = function() {
 		post(data).then(function(returnedData) {
 			self.authenticated(false);
 		});
-	}
+	};
 
 	self.initialize_userpage = function() {
 		post({action: "conversation/waiting"}).then(function(returnedData) {
@@ -69,7 +79,11 @@ var loginViewModel = function() {
 				//Show message "No conversations waiting"
 			}
 		});
-	}
+	};
+
+	self.create_conversation = function() {
+
+	};
 };
 
 ko.applyBindings(new loginViewModel());
