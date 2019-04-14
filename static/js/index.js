@@ -5,6 +5,14 @@ var loginViewModel = function() {
 	self.error = ko.observable(false);
 	self.error_string = ko.observable("");
 	self.authenticated = ko.observable(false);
+	
+	self.pages = ko.observableArray([
+		{ name: 'find', text: "Find" }, 
+		{ name: 'new', text: "New" }, 
+		{ name: 'chat', text: "Chat" }
+	]);
+	self.current_page = ko.observable(self.pages()[2]);
+
 	self.search_results = ko.observableArray([
 		{
 			id: "doaiwdbn",
@@ -16,12 +24,12 @@ var loginViewModel = function() {
 		}
 	]);
 
-	self.pages = ko.observableArray([
-		{ name: 'find', text: "Find" }, 
-		{ name: 'new', text: "New" }, 
-		{ name: 'chat', text: "Chat" }
-	]);
-	self.current_page = ko.observable(self.pages()[2]);
+	self.new_conversation = {
+		text: "dawd"
+	};
+	self.show_new_conversation_feedback = ko.observable(false);
+	self.new_conversation_feedback = ko.observable("");
+
 
 	self.show_page = function(e) {
 		self.current_page(e);
@@ -82,7 +90,16 @@ var loginViewModel = function() {
 	};
 
 	self.create_conversation = function() {
-
+		var data = ko.toJS(self.new_conversation);
+		data.action = "conversation/create";
+		post(data).then(function(returnedData) {
+			self.show_new_conversation_feedback(true);
+			if(returnedData.success == true) {
+				self.new_conversation_feedback("New conversation created."); 
+			} else {
+				self.new_conversation_feedback("Failed to create conversation."); 
+			}
+		});
 	};
 };
 

@@ -11,7 +11,20 @@ var post_mocks = {
 			});
 		}
 	},
+
 	"user/sign_out": function(data) {
+		return new Promise(function(resolve, reject) {
+			resolve({success: true});
+		});
+	},
+
+	"conversation/create": function(data) {
+		console.log(data);
+		if(data.text == "fail") {
+			return new Promise(function(resolve, reject) {
+				resolve({success: false});
+			});
+		}
 		return new Promise(function(resolve, reject) {
 			resolve({success: true});
 		});
