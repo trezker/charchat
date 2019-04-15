@@ -28,6 +28,24 @@ var post_mocks = {
 		return new Promise(function(resolve, reject) {
 			resolve({success: true});
 		});
+	},
+
+	"conversation/active": function(data) {
+		return new Promise(function(resolve, reject) {
+			resolve({
+				success: true,
+				conversations: [
+					{
+						title: "Sven",
+						waiting_for_you: false
+					},
+					{
+						title: "Bertil",
+						waiting_for_you: true
+					}
+				]
+			});
+		});
 	}
 };
 

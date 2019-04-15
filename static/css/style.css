@@ -6,6 +6,10 @@ a, a:active, a:focus{
 	outline: none;
 }
 
+i {
+  font-size: 32px;
+}
+
 #login_form {
 	width: 220px;
 }

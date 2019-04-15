@@ -30,6 +30,7 @@ var loginViewModel = function() {
 	self.show_new_conversation_feedback = ko.observable(false);
 	self.new_conversation_feedback = ko.observable("");
 
+	self.conversations = ko.observableArray([]);
 
 	self.show_page = function(e) {
 		self.current_page(e);
@@ -79,12 +80,14 @@ var loginViewModel = function() {
 	};
 
 	self.initialize_userpage = function() {
-		post({action: "conversation/waiting"}).then(function(returnedData) {
-			if(returnedData.length > 0) {
+		post({action: "conversation/active"}).then(function(returnedData) {
+			if(returnedData.success == true) {
+				self.conversations(returnedData.conversations);
+				console.log(self.conversations());
 				//show chat interface
 			}
 			else {
-				//Show message "No conversations waiting"
+				//Show error message
 			}
 		});
 	};
