@@ -37,11 +37,19 @@ var post_mocks = {
 				conversations: [
 					{
 						title: "Sven",
-						waiting_for_you: false
+						waiting_for_you: false,
+						log: [
+							{ text: "Hej" },
+							{ text: "Hallå" }
+						]
 					},
 					{
 						title: "Bertil",
-						waiting_for_you: true
+						waiting_for_you: true,
+						log: [
+							{ text: "Hola" },
+							{ text: "Grande" },
+						]
 					}
 				]
 			});
