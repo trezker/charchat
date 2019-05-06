@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Charchat</title>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
 	<link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/style.css">
 </head>
@@ -91,7 +90,7 @@
 				</div>
 				<div data-bind="foreach: search_results">
 					<div class="input-group mb-3">
-						<div class="form-control" data-bind="text: text"></div>
+						<label class="form-control" data-bind="text: text"></label>
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" type="button">Reply</button>
 						</div>
