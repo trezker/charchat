@@ -70,7 +70,7 @@
 		</div>
 		<div id="content">
 			<div id="chat" data-bind="visible: current_page().name == 'chat'">
-				<div id="chatlog" data-bind="foreach: current_conversation.log">
+				<div id="chatlog" data-bind="foreach: conversation_log">
 					<div data-bind="text: text"></div>
 				</div>
 				<div class="input-group mb-3">

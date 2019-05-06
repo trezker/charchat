@@ -32,6 +32,7 @@ var loginViewModel = function() {
 
 	self.conversations = ko.observableArray([]);
 	self.current_conversation = ko.observable();
+	self.conversation_log = ko.observableArray();
 
 	self.show_page = function(e) {
 		self.current_page(e);
@@ -108,6 +109,8 @@ var loginViewModel = function() {
 
 	self.show_conversation = function(e) {
 		self.current_conversation(e);
+		self.conversation_log(e.log);
+		console.log(self.current_conversation());
 	}
 };
 
