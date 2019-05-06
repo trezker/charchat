@@ -35,3 +35,7 @@ i {
 #chatlog>div {
 	padding: 8px;
 }
+
+.underline {
+	text-decoration: underline;
+}

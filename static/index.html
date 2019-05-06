@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Knodd</title>
+	<title>Charchat</title>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
 	<link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
@@ -61,8 +61,8 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" data-bind="visible: current_page().name == 'chat'">
 				<div class="collapse navbar-collapse" id="navbarConversations">
 					<ul class="navbar-nav mr-auto" data-bind="foreach: conversations">
-						<li class="nav-item" data-bind="css: { active: $data == $root.current_page() }">
-							<a class="nav-link" href="#" data-bind="click: $parent.show_page, text: title"></a>
+						<li class="nav-item" data-bind="css: { active: $data == $root.current_conversation(), underline: waiting_for_you }">
+							<a class="nav-link" href="#" data-bind="click: $parent.show_conversation, text: title"></a>
 						</li>
 					</ul>
 				</div>
@@ -70,9 +70,8 @@
 		</div>
 		<div id="content">
 			<div id="chat" data-bind="visible: current_page().name == 'chat'">
-				<div id="chatlog">
-					<div>Hej</div>
-					<div>Hallå</div>
+				<div id="chatlog" data-bind="foreach: current_conversation.log">
+					<div data-bind="text: text"></div>
 				</div>
 				<div class="input-group mb-3">
   					<textarea class="form-control"></textarea>
