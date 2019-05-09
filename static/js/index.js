@@ -65,7 +65,7 @@ var loginViewModel = function() {
 		}
 		post(data).then(function(returnedData) {
 			if(returnedData.success == true) {
-				loginViewModel.sign_in();
+				self.sign_in();
 			}
 			else {
 				self.error(true);
