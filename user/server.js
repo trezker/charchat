@@ -88,14 +88,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-const asyncMiddleware = fn =>
-  (req, res, next) => {
-    Promise.resolve(fn(req, res, next))
-      .catch(next);
-};
-
-app.post('/api/user/sign_up', asyncMiddleware(async (req, res, next) => { await sign_up.handler(req, res); }));
-app.post('/api/user/sign_in', asyncMiddleware(async (req, res, next) => { await sign_in.handler(req, res); }));
+app.post('/api/user/sign_up', (req, res) => { sign_up.handler(req, res); });
+app.post('/api/user/sign_in', (req, res) => { sign_in.handler(req, res); });
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
