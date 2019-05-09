@@ -10,6 +10,7 @@
   "dependencies": {
     "express": "^4.16.1",
     "mariadb": "latest",
-    "await-to-js": "latest"
+    "await-to-js": "latest",
+    "password-hash": "latest"
   }
 }

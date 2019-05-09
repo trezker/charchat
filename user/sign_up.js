@@ -1,3 +1,5 @@
+var passwordHash = require('password-hash');
+
 module.exports = {
 	initialize: function(dbpool) {
 		var self = this;
@@ -19,7 +21,12 @@ function sign_up(dbpool) {
 		let conn;
 		try {
 			conn = await self.dbpool.getConnection();
-			const res = await conn.query("INSERT INTO user (name) value (?)", [username]);
+			const create = await conn.query("INSERT INTO user (name) value (?)", [username]);
+			const user = await conn.query("SELECT id from user where name = ?", [username]);
+			const res = await conn.query(
+				"INSERT INTO credential (user_id, type, value) value (?, 'password', ?)", 
+				[user[0].id, passwordHash.generate(password)]
+			);
 			result.success = true;
 		} catch (err) {
 			result.success = false;
