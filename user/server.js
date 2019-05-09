@@ -78,6 +78,8 @@ const HOST = '0.0.0.0';
 
 const sign_up_module = require("./sign_up");
 var sign_up = new sign_up_module.initialize(dbpool);
+const sign_in_module = require("./sign_in");
+var sign_in = new sign_in_module.initialize(dbpool);
 
 // App
 const app = express();
@@ -93,9 +95,7 @@ const asyncMiddleware = fn =>
 };
 
 app.post('/api/user/sign_up', asyncMiddleware(async (req, res, next) => { await sign_up.handler(req, res); }));
-app.get('/api/user/log_in', (req, res) => {
-	res.send('Logging in\n');
-});
+app.post('/api/user/sign_in', asyncMiddleware(async (req, res, next) => { await sign_in.handler(req, res); }));
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
