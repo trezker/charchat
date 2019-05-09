@@ -1,3 +1,5 @@
+var passwordHash = require('password-hash');
+
 module.exports = {
 	initialize: function(dbpool) {
 		var self = this;
@@ -19,8 +21,9 @@ function sign_in(dbpool) {
 		let conn;
 		try {
 			conn = await self.dbpool.getConnection();
-			const res = await conn.query("SELECT name from user where name = ?", [username]);
-			if(res.length == 1) {
+			const user = await conn.query("SELECT id from user where name = ?", [username]);
+			const credential = await conn.query("select value from credential where user_id = ? and type = 'password'", [user[0].id]);
+			if(passwordHash.verify(password, credential[0].value)) {
 				result.success = true;
 			}
 			else {
