@@ -19,10 +19,13 @@ function sign_in(dbpool) {
 		let conn;
 		try {
 			conn = await self.dbpool.getConnection();
-			console.log(username);
 			const res = await conn.query("SELECT name from user where name = ?", [username]);
-			console.log(result);
-			result.success = true;
+			if(res.length == 1) {
+				result.success = true;
+			}
+			else {
+				result.success = false;
+			}
 		} catch (err) {
 			result.success = false;
 		} finally {
